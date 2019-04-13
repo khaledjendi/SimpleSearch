@@ -11,5 +11,5 @@ This project uses dataset from: http://mlg.ucd.ie/datasets/bbc.html
 ## Output:
 
 
-[![""](https://drive.google.com/uc?id=1A9E0cz4zp1P7jDrex55RLWsXGp)]()
-[![""](https://drive.google.com/uc?id=1PvNsY1868g7BAFim3zVpOY7lVLPFVi)]()
+[![""](https://drive.google.com/uc?id=1A9E0cz4zp1P7jDrex55RLWsXGp_456Bf)]()
+[![""](https://drive.google.com/uc?id=1PvNsY1868g7BAFim3zVpOY7lVLPFVi_K)]()
