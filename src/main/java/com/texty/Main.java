@@ -88,7 +88,8 @@ public class Main {
                         TxtFile.removeFiles(param, txtFiles);
                         break;
                     case ":suggest":
-
+                        Suggestion suggestion = new Suggestion();
+                        suggestion.suggest(param, txtFiles);
                         break;
                     default:
                         break;
