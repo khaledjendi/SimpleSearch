@@ -7,13 +7,16 @@ package com.texty;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -41,6 +44,8 @@ public class Main {
             return;
         }
         log.info(sbFiles.append(txtFiles.size()).append(" file(s) read in directory: ").append(args[0]).toString());
+
+        search();
     }
 
     private static String retrieveContents(String txtPath) {
@@ -51,5 +56,47 @@ public class Main {
             log.error("at Main::retrieveContents::txtPath, full stack trace:", ex);
         }
         return sb.toString();
+    }
+
+    private static void search() {
+        while (true) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            try {
+                System.out.print("> ");
+                String line = reader.readLine().trim();
+                //System.out.println(line);
+                if (line.startsWith(":exit") || line.startsWith("exit")) {
+                    break;
+                }
+                if (!Pattern.compile(":[a-z]+\\s.*").matcher(line).matches()) {
+                    log.warn("Wong command!\nCommand must be in the following format --> :command params");
+                    continue;
+                }
+
+                String command = line.substring(0, line.indexOf(' '));
+                String param = line.substring(line.indexOf(' ') + 1);
+
+                switch (command) {
+                    case ":search":
+                        Search search = new SearchImpl(param, txtFiles, 7);
+                        search.searchWords();
+                        break;
+                    case ":add":
+
+                        break;
+                    case ":rm":
+
+                        break;
+                    case ":suggest":
+
+                        break;
+                    default:
+                        break;
+                }
+
+            } catch (IOException ex) {
+                log.error("at Main::search, full stack trace:", ex);
+            }
+        }
     }
 }
