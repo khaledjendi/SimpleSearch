@@ -82,10 +82,10 @@ public class Main {
                         search.searchWords();
                         break;
                     case ":add":
-
+                        TxtFile.addFiles(param, txtFiles);
                         break;
                     case ":rm":
-
+                        TxtFile.removeFiles(param, txtFiles);
                         break;
                     case ":suggest":
 
